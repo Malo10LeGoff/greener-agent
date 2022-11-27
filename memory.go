@@ -6,16 +6,16 @@ import (
 	"math"
 )
 
-type MemoryUsage struct {
-	UsagePercent int
+type MemoryUsageType struct {
+	UsagePercent int `json:"usagePercent" jsonschema:"required"`
 }
 
-func getVirtualMemory() (MemoryUsage) {
+func getVirtualMemory() (MemoryUsageType) {
     v, _ := mem.VirtualMemory()
 
 	memoryUsagePercent := int(math.Round(v.UsedPercent))
 
-	memoryInfo := MemoryUsage{memoryUsagePercent}
+	memoryInfo := MemoryUsageType{memoryUsagePercent}
 
     return memoryInfo
 

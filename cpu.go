@@ -4,13 +4,13 @@ import (
 	"runtime"
 )
 
-type CPUUsage struct {
-	NumCores int
+type CPUUsageType struct {
+	NumCores int `json:"numCores" jsonschema:"required"`
 }
 
-func getCPU() (CPUUsage) {
+func getCPU() (CPUUsageType) {
 
-	cpuInfo := CPUUsage{runtime.NumCPU()}
+	cpuInfo := CPUUsageType{runtime.NumCPU()}
 
 	return cpuInfo
 
