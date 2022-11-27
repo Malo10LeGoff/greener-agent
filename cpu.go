@@ -1,14 +1,17 @@
 package main
 
 import (
-    "fmt"
-    "github.com/shirou/gopsutil/v3/cpu"
+	"runtime"
 )
 
-func getCPU() {
+type CPUUsage struct {
+	NumCores int
+}
 
-	p, _ := cpu.Info()
+func getCPU() (CPUUsage) {
 
-    fmt.Println(p)
+	cpuInfo := CPUUsage{runtime.NumCPU()}
+
+	return cpuInfo
 
 }

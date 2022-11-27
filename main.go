@@ -1,7 +1,9 @@
 package main
 
-
-import "time"
+import (
+    "fmt"
+	"time"
+)
 
 func main() {
 
@@ -9,14 +11,14 @@ func main() {
 
 	for running {
 
-		getCPU()
+		cpuInfo := getCPU()
 
-		getVirtualMemory()
+		memoryInfo := getVirtualMemory()
+
+		fmt.Printf("Total Resource Consumed: NumCores : %v , UsedPercentMemory: %v\n", cpuInfo.NumCores, memoryInfo.UsagePercent)
 
 		time.Sleep(8 * time.Second)
 
 	}
-
-
 
 }

@@ -1,18 +1,22 @@
 package main
 
 import (
-    "fmt"
 
     "github.com/shirou/gopsutil/v3/mem"
+	"math"
 )
 
-func getVirtualMemory() {
+type MemoryUsage struct {
+	UsagePercent int
+}
+
+func getVirtualMemory() (MemoryUsage) {
     v, _ := mem.VirtualMemory()
 
-    // almost every return value is a struct
-    fmt.Printf("Total: %v, Free:%v, UsedPercent:%f%%\n", v.Total, v.Free, v.UsedPercent)
+	memoryUsagePercent := int(math.Round(v.UsedPercent))
 
-    // convert to JSON. String() is also implemented
-    fmt.Println(v)
+	memoryInfo := MemoryUsage{memoryUsagePercent}
+
+    return memoryInfo
 
 }
